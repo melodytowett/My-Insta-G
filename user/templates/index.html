@@ -1,3 +1,5 @@
+{%extends 'pages/base.html'%} {%block content%} {{block.super}}
+{% load bootstrap4 %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,15 +8,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My-page</title>
 </head>
-<body>
+<body style="background-color: aqua;">
     <div class="container">
+        {% for page in pages %}
         <div class="row">
             <div class="card">
                 <div class="card-title">
-                    {{}}
+                    {{page.image_name}}
+                </div>
+                <div class="card-body">
+                    <img src=" {{page.image.url}} " alt="">
+                </div>
+                <div class="card-footer">
+                    {{page.image_caption}}
                 </div>
             </div>
         </div>
+        {% endfor %}
     </div>
 </body>
 </html>
+{% endblock %}

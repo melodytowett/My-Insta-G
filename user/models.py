@@ -1,4 +1,4 @@
-from distutils.command.upload import upload
+
 
 from django.db import models
 from cloudinary.models import CloudinaryField
@@ -10,7 +10,7 @@ class Profile(models.Model):
     bio = models.TextField(blank=True)
 
     def __str__(self):
-        return self.profile_photo
+        return self.bio
 
     def save_profile(self):
         self.save()
@@ -30,6 +30,7 @@ class Image(models.Model):
         self.save()
 
 
-    # @classmethod
-    # def my_page(cls):
-    #     page = cls.objects.fil
+    @classmethod
+    def my_page(cls,name):
+        page = cls.objects.filter(image_name__in=name)
+        return page
