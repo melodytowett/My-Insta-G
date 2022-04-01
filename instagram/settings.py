@@ -11,6 +11,10 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
 from pathlib import Path
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
+from decouple import config,Csv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-)i=ak#caj+zoe1z80=dx3kj8z*t0yh@tkx@f!6z-ih#)o=5l=*'
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -29,14 +33,26 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
-
+cloudinary.config( 
+  cloud_name = "melo-cloud", 
+  api_key = "471374148232439", 
+  api_secret = "d0MpcQfMP4qllWvto7b1jL9baeE" 
+)
+# cloudinary.config( 
+#   cloud_name = "YOUR_CLOUD_NAME", 
+#   api_key = "YOUR_API_KEY", 
+#   api_secret = "YOUR_API_SECRET" 
+# )
 INSTALLED_APPS = [
+    'user.apps.UserConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'cloudinary',
+   
 ]
 
 MIDDLEWARE = [

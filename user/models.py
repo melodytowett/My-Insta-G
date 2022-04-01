@@ -1,15 +1,19 @@
 from distutils.command.upload import upload
-from operator import mod
-import profile
-from pyexpat import model
+
 from django.db import models
+from cloudinary.models import CloudinaryField
 
 # Create your models here.
 
+class Profile(models.Model):
+    profile_photo = models.ImageField(upload_to='',blank=True)
+    bio = models.CharField
+
 class Image(models.Model):
-    image = models.ImageField(upload_to = '/article',blank =True)
-    name = models.CharField(max_length=40)
-    caption = models.CharField(max_length=50)
-    profile = models.ForeignKey()
-    likes = models.CharField()
+    image = CloudinaryField ('image')
+    image_name = models.CharField(max_length=40)
+    image_caption = models.CharField(max_length=200)
+    profile = models.ForeignKey(Profile ,on_delete=models.CASCADE)
+    likes = models.IntegerField(default=0)
     comments = models
+
