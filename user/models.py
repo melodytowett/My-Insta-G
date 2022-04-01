@@ -12,6 +12,9 @@ class Profile(models.Model):
     def __str__(self):
         return self.profile_photo
 
+    def save_profile(self):
+        self.save()
+
 class Image(models.Model):
     image_name = models.CharField(max_length=40)
     image = CloudinaryField ('image')
@@ -22,3 +25,11 @@ class Image(models.Model):
 
     def __str__(self):
         return self.image_name
+
+    def save_image(self):
+        self.save()
+
+
+    # @classmethod
+    # def my_page(cls):
+    #     page = cls.objects.fil
