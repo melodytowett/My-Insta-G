@@ -4,6 +4,6 @@ from .models import Image
 
 def my_page(request):
     images = Image.objects.all()
-    pages = Image.my_page(images)
-
-    return render(request,'index.html',{"page":pages})
+    ctx = {'images':images}
+    pages = Image.my_pages(images)
+    return render(request,'index.html',ctx)

@@ -15,6 +15,10 @@ class ImageTestClass(TestCase):
         self.images.save_image()
         images = Image.objects.all()
         self.assertTrue(len(images)>0)
+        
+    def get_my_page(self):
+        my_page=Image.my_pages()
+        self.assertTrue(len(my_page)>0)
 
     def tearDown(self):
         Image.objects.all().delete()
@@ -33,4 +37,5 @@ class ProfileTestClass(TestCase):
 
     def tearDown(self):
         Profile.objects.all().delete()
-        
+    
+    

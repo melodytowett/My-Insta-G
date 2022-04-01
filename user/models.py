@@ -31,6 +31,6 @@ class Image(models.Model):
 
     
     @classmethod
-    def my_page(cls,name):
+    def my_pages(cls,name):
         page = cls.objects.filter(image_name__in=name)
         return page
