@@ -17,9 +17,9 @@ class Profile(models.Model):
 
 class Image(models.Model):
     image_name = models.CharField(max_length=40)
-    image = CloudinaryField ('image')
+    image = CloudinaryField ('image',blank=True)
     image_caption = models.CharField(max_length=200)
-    profile = models.ForeignKey(Profile ,on_delete=models.CASCADE)
+    profile = models.ForeignKey(Profile ,on_delete=models.CASCADE,null=True)
     likes = models.IntegerField(default=0)
     comments = models.CharField(max_length=100)
 
@@ -29,7 +29,7 @@ class Image(models.Model):
     def save_image(self):
         self.save()
 
-
+    
     @classmethod
     def my_page(cls,name):
         page = cls.objects.filter(image_name__in=name)
