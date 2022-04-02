@@ -32,7 +32,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
+LOGIN_REDIRECT_URL = "/" 
 # Application definition
 cloudinary.config( 
   cloud_name = "melo-cloud", 
