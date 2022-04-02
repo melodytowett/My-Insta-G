@@ -1,8 +1,8 @@
 
 from django.http import request
 from django.shortcuts import render,redirect
-
-import user
+from django .contrib.auth.decorators import login_required
+from .forms import NewPostForm
 from .models import Image
 from .forms import NewUserForm
 from django.contrib.auth import login,authenticate
@@ -10,11 +10,6 @@ from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
 # Create your views here.
 
-def my_page(request):
-    images = Image.objects.all()
-    ctx = {'images':images}
-    pages = Image.my_pages(images)
-    return render(request,'index.html',ctx) 
 
 def register_user(request):
     if request.method == "POST":
@@ -22,7 +17,7 @@ def register_user(request):
         if form.is_valid():
             user = form.save()
             login(request,user)
-            messages.success(request,"Registration successful.")
+            messages.success(request,"Registration successfull.")
             return redirect("my_page")
         messages.error(request,"Invalid credentials.")
     form=NewUserForm()
@@ -45,5 +40,25 @@ def login_user(request):
             messages.error(request,"invalid username or password.")
     form = AuthenticationForm()
     return render(request,'registration/login.html',context={"login_form":form})
+
+@login_required(login_url='/accounts/login/')
+def my_page(request):
+    images = Image.objects.all()
+    ctx = {'images':images}
+    pages = Image.my_pages(images)
+    current_user = request.user
+    if request.method == 'POST':
+        form = NewPostForm(request.POST,request.FILES)
+        if form.is_valid():
+            image = form.save(commit=False)
+            image.user = current_user
+            image.save()
+            return redirect("my_page")
+         
+    else:
+        form=NewPostForm()
+    return render(request,'index.html',ctx)
+    
+
 
 
