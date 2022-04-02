@@ -11,13 +11,14 @@
 <body>
     <div class="spc" style="margin-top: 30px;"></div>
     <div class="container">
-        
+       
        {%for image in images%}
         <div class="row">
             <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2"></div>
             <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
             <div class="card" style="width: 30rem;">
                 <div class="card-header">
+                    <div> {{image.profile}} </div>
                     <b>{{image.image_name}}</b>
                 </div>
                 <div class="card-body">
@@ -27,8 +28,7 @@
                     <b> {{image.likes}} likes </b>
                     <p class="card-subtitle mb-2"> <span> <b>{{image.image_name}}</b></span> {{image.image_caption}}<p> 
                 </div>
-                <p class="card-text">add comment</p>
-                
+                <p class="card-text">add comment</p>  
            </div>
            </div>
            <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5"></div>
