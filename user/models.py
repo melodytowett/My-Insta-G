@@ -1,4 +1,3 @@
-
 from django.contrib.auth.models import User
 from django.db import models
 from cloudinary.models import CloudinaryField
@@ -34,3 +33,7 @@ class Image(models.Model):
     def my_pages(cls,name):
         page = cls.objects.filter(image_name__in=name)
         return page
+    @classmethod
+    def search_by_name(cls,search_term):
+        names = cls.objects.filter(image_name__icontains = search_term)
+        return names

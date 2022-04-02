@@ -1,0 +1,25 @@
+{%extends 'pages/base.html'%} 
+{% block content %}
+<div class="container">
+
+  <div class="row">
+    {% if names %}
+      <h2>Found {{ names|length }} of searched term {{message}}</h2>
+    {% else %}
+      <h2> Found 0 articles for the search term {{message}}</h2>
+    {% endif %}
+
+  </div>
+
+  <div class="row">
+
+  {% if names %}
+    {% for name in names %}
+      <div class="col-sm-6 col-md-3">
+          <p>{{name.image_caption}}</p>
+      </div>
+    {% endfor %}
+  {% endif %}
+  </div>
+</div>
+{% endblock %}
