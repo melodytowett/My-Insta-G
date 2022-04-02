@@ -1,9 +1,10 @@
 
+import profile
 from django.http import request
 from django.shortcuts import render,redirect
 from django .contrib.auth.decorators import login_required
-from .forms import NewPostForm
-from .models import Image
+from .forms import NewPostForm,ProfileForm
+from .models import Image, Profile
 from .forms import NewUserForm
 from django.contrib.auth import login,authenticate
 from django.contrib import messages
@@ -58,6 +59,24 @@ def my_page(request):
     else:
         form=NewPostForm()
     return render(request,'index.html',ctx)
+
+@login_required(login_url='/accounts/login/')
+def my_profile(request):
+    profiles = Profile.objects.all()
+    ctx = {'profiles':profiles}
+    current_user = request.user
+    if request.method == 'POST':
+        form = ProfileForm(request.POST,request.FILES)
+        if form.is_valid():
+            profile = form.save(commit=False)
+            profile.user = current_user
+            profile.save()
+            return redirect("my_page")
+    else:
+        form=ProfileForm()
+    return render(request,'profile.html',ctx,{"profile_form":form})
+
+
     
 
 

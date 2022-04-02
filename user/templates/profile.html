@@ -1,0 +1,21 @@
+{%extends 'pages/base.html'%} {%block content%} {{block.super}}
+{% load bootstrap4 %}
+{% load crispy_forms_tags %}  
+
+<div class="container">
+    <div class="row">
+        {% for profiles in profile %}
+        <div class="col-sm-4 col-md-4 col-lg-4">
+                   {%if user.profile_photo %}
+                      <img src=" {profile.profile_photo.url} "  class="rounded-circle" alt="" srcset="">
+                      {% endif %}
+        </div>
+        <div class="card-body">
+             <form  action="{%url 'profile'%}" method="post" enctype="multipart/form-data">
+                      {% csrf_token %} {{ profile_form|crispy }}
+                   <input type="submit" class="btn btn-success btn-sm" value="Post">
+              </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -26,5 +26,5 @@ urlpatterns = [
     path('accounts/register/',views.register_user,name='register'),
     path('accounts/', include('django.contrib.auth.urls')),
     path('tinymce/',include('tinymce.urls')),
-    # path('login',views.login_user,name="login"),
+    path('login',views.login_user,name="login"),
 ]
