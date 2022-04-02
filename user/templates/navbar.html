@@ -1,4 +1,6 @@
+
 {% load crispy_forms_tags %}
+ <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
     <a class="navbar-brand" style="margin-left: 100px" href="#">Instagram</a>
@@ -27,10 +29,14 @@
     <div>
       {% if user.is_authenticated %}
       <ul>
-        <li> <a href="{% url 'profile' %}}">profile</a>
-           </li>
-        <li>
-          <a href="/accounts/logout">Logout</a>
+        <i class="fas fa-home " style="font-size: 24px;"></i>
+         <i class='fa fa-plus-square black-color' style="font-size: 24px;"></i>
+        <i class='far fa-heart' style='font-size:24px'></i>
+        <i class='fas fa-user-circle' style='font-size:25px'>
+          <!-- <li> <a href="{% url 'profile' %}}">profile</a>
+          <a href="/accounts/logout">Logout</a> -->
+        </i>
+          
         </li>
       </ul>
       {% endif %}
