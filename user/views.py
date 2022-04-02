@@ -74,7 +74,7 @@ def my_profile(request):
             return redirect("my_page")
     else:
         form=ProfileForm()
-    return render(request,'profile.html',ctx,{"profile_form":form})
+    return render(request,'profile.html',{"profile_form":form})
 
 
     

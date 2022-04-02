@@ -8,8 +8,9 @@
         <div class="col-sm-4 col-md-4 col-lg-4">
                    {%if user.profile_photo %}
                       <img src=" {profile.profile_photo.url} "  class="rounded-circle" alt="" srcset="">
-                      {% endif %}
+                     {% endif %}
         </div>
+        {%endfor%}
         <div class="card-body">
              <form  action="{%url 'profile'%}" method="post" enctype="multipart/form-data">
                       {% csrf_token %} {{ profile_form|crispy }}
