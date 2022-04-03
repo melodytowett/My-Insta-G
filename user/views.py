@@ -96,10 +96,11 @@ def new_post(request):
 
 @login_required(login_url='/accounts/login/')
 def search_results(request):
+    images = Image.objects.all()
     if 'name'in request.GET and request.GET['name']:
         search_term = request.GET.get("name")
         name_searched = Image.search_by_name(search_term)
-        return render(request,'pages/search.html',{"names":name_searched})
+        return render(request,'pages/search.html',{"names":name_searched,"images":images})
     else:
         message = "No related search"
         return render(request,'pages/search.html',{"message":message})

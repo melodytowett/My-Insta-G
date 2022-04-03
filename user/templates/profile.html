@@ -12,8 +12,8 @@
         </div>
         {%endfor%}
         <div class="card-body">
-             <form  action="{%url 'new_post'%}" method="post" enctype="multipart/form-data">
-                     {% csrf_token %} {{ post_form|crispy }}
+             <form  action="{%url 'profile'%}" method="post" enctype="multipart/form-data">
+                     {% csrf_token %} {{ profile_form|crispy }}
                    <input type="submit" class="btn btn-success btn-sm" value="Post">
               </form>
                  {% block scripts %}

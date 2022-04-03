@@ -7,7 +7,12 @@
   $('#myInput').trigger('focus')
 })
 </script>
-    <div class="spc" style="margin-top: 30px;"></div>
+    <div class="spc" style="margin-top: 30px; margin-left: 300px; margin-bottom: 20px;display: flex;">
+        {% for image in images %}
+        <img src=" {{image.image.url}} " class="rounded-circle" style="width: 40px; height: 40px; border-style: solid; border-color: rgb(233, 66, 75); margin-left: 15px;" alt="" srcset="">
+        <p style="margin-top: 35px; margin-left: -25px;font-size: x-small;"> {{image.user}} </p>
+        {%endfor%}
+    </div>
     <div class="container">
        {%for image in images%}
         <div class="row">
@@ -15,7 +20,7 @@
                
             </div>
             <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
-            <div class="card" style="width: 30rem;">
+            <div class="card" style="width: 30rem; margin-bottom: 20px;">
                 <div class="card-header">
                    <img src=" {{image.image.url}} " class="rounded-circle" style="width: 40px; height: 40px;" alt="" srcset="">
                     <span> {{image.user}} </span>
@@ -69,7 +74,7 @@
                 <p class="text-muted" style="margin-left: 40px;">Follows you</p>
           </div>
             </div>
-         
+        
         </div>
        {% endfor %}
 

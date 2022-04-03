@@ -3,20 +3,20 @@
 <div class="container">
 
   <div class="row">
-    {% if names %}
-      <h2>Found {{ names|length }} of searched term {{message}}</h2>
+    {% if images %}
+      <h2>Found {{ images|length }} of searched term {{message}}</h2>
     {% else %}
-      <h2> Found 0 articles for the search term {{message}}</h2>
+      <h2> Found 0 post for the search term {{message}}</h2>
     {% endif %}
 
   </div>
 
   <div class="row">
 
-  {% if names %}
-    {% for name in names %}
+  {% if images %}
+    {% for image in images %}
       <div class="col-sm-6 col-md-3">
-          <p>{{name.image_caption}}</p>
+          <p>{{image.post}}</p>
       </div>
     {% endfor %}
   {% endif %}
