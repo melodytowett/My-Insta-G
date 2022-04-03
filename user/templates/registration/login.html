@@ -15,13 +15,9 @@
             <form  action="/accounts/login/" method="post" style="margin-left:100px ;">
             {% csrf_token %}
             {{ login_form|crispy }}
-
             <div class="form-group" style="margin-left:70px ; margin-top: 10px;">
-              <input type="submit" class="btn btn-primary btn-sm" value="Login">
+               <button class="btn btn-primary" type="submit"><a href="/accounts/login/"></a>login </button>
             </div>
-
-            <input type="hidden" name="next" value="{{next}}">
-
           </form>
      </div>
      <div class="card-footer">

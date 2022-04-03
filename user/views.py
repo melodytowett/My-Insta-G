@@ -27,8 +27,6 @@ def register_user(request):
     return render(request,'registration/register.html',context={"register_form":form})
 
 def login_user(request):
-    # if request.user.is_authenticated:
-    #     return redirect("my_page")
     if request.method == "POST":
         form = AuthenticationForm(request,data=request.POST)
         if form.is_valid():
@@ -38,7 +36,7 @@ def login_user(request):
             if user is not None:
                 login(request,user)
                 # messages.info(request,)
-                return redirect("user:my_page")
+                return redirect("my_page")
             else:
                 messages.error(request,"Invalid username or password.")
         else:
