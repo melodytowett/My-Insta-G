@@ -1,3 +1,4 @@
+
 from django.contrib.auth.models import User
 from django.db import models
 from cloudinary.models import CloudinaryField
@@ -37,3 +38,9 @@ class Image(models.Model):
     def search_by_name(cls,search_term):
         names = cls.objects.filter(image_name__icontains = search_term)
         return names
+class Follow(models.Model):
+    followers =  models.ForeignKey(Profile,on_delete=models.CASCADE,related_name='following')
+    followed = models.ForeignKey(Profile,on_delete=models.CASCADE,related_name='followers')
+
+    def __str__(self):
+        return self.followers

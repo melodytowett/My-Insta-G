@@ -9,17 +9,10 @@
 </script>
     <div class="spc" style="margin-top: 30px;"></div>
     <div class="container">
-        <div class="row">
-            
-              <form  action="{%url 'my_page'%}" method="post" enctype="multipart/form-data">
-                      {% csrf_token %} {{ post_form|crispy }}
-                   <input type="submit" class="btn btn-success btn-sm" value="Post">
-              </form>
-        </div>
-        
        {%for image in images%}
         <div class="row">
             <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+               
             </div>
             <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
             <div class="card" style="width: 30rem;">
@@ -39,7 +32,9 @@
                                 </button>
                             </div>
                             <div class="modal-body">
+                                <img src=" {{image.image.url}} " alt="" srcset="">
                                 <p style="margin-left:50px ; justify-content: space-around;">posts <span>following</span> followers</p>
+                                <p>{{image.image_caption}}</p>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-sm" data-dismiss="modal" style="margin-right: 300px; border: grey; border-radius: 1px;">message</button>
@@ -64,7 +59,7 @@
                     <p class="card-subtitle mb-2"> <span> <b>{{image.image_name}}</b></span> {{image.image_caption}}<p> 
                 </div>
                      <p class="card-text text-muted"> <span><i class='far fa-smile-beam' style='font-size:24px'></i></span> add comment
-                    <a href="#" class="card-text" style="margin-left: 250px;color: rgb(152, 152, 243); font-weight: bold;"> Post </a>
+                    <a href=" {%url 'profile'%} " class="card-text" style="margin-left: 250px;color: rgb(152, 152, 243); font-weight: bold;"> Post </a>
                     </p>  
            </div>
            </div>
@@ -74,9 +69,15 @@
                       {{image.user}}
                    </li>
                </ul>
-           </div>
+               <div style="margin-left: 100px;">
+                <img src=" {{image.image.url}} " class="rounded-circle" style="width: 40px; height: 40px;" alt="" srcset=""> <span>{{image.profile}} <a href="#">follow</a> </span>
+                <p class="text-muted" style="margin-left: 40px;">Follows you</p>
+          </div>
+            </div>
+         
         </div>
        {% endfor %}
+
     </div>
 
 {% endblock %}
