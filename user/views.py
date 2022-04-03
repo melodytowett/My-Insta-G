@@ -90,9 +90,9 @@ def new_post(request):
             post.user = current_user
             post.save()
             return redirect('my_page')
-        else:
-            form = NewPostForm()
-        return render(request,'my-page.html',{"pform":pform})
+    else:
+        pform = NewPostForm()
+    return render(request,'pages/my-page.html',{"pform":pform})
 
 @login_required(login_url='/accounts/login/')
 def search_results(request):
