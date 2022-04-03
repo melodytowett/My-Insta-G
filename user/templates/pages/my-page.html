@@ -18,7 +18,7 @@
   <div class="row">
             
               <form  action="{%url 'my_page'%}" method="post" enctype="multipart/form-data">
-                      {% csrf_token %} {{ post_form|crispy }}
+                      {% csrf_token %} {{ pform|crispy }}
                    <input type="submit" class="btn btn-success btn-sm" value="Post">
               </form>
         </div>

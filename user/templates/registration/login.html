@@ -6,31 +6,28 @@
   <div class="row">
     <!-- Empty div -->
     <div class="col-md-4"></div>
-    <div class="col-md-4">
-   
-      <div class="panel panel-default">
-
-        <div class="panel-heading">
-          <h3 class="text-center">Sign In</h3>
-        </div>
-        <div class="panel-body">
-
-          <form  action="/accounts/login/" method="post">
+    <div class="col-md-4" style="margin-top: 80px;">
+   <div class="card text-center" style="width: 24rem;">
+     <div class="card-title">
+        <h3 class="text-center">Sign In</h3>
+     </div>
+     <div class="card-body">
+            <form  action="/accounts/login/" method="post" style="margin-left:100px ;">
             {% csrf_token %}
             {{ login_form|crispy }}
 
-            <div class="form-group">
+            <div class="form-group" style="margin-left:70px ; margin-top: 10px;">
               <input type="submit" class="btn btn-primary btn-sm" value="Login">
             </div>
 
             <input type="hidden" name="next" value="{{next}}">
 
           </form>
-          <p class="text-center">Don't have an account? <a href="{%url 'register' %}">Create an account</a>.</p>
-        </div>
-
-      </div>
-
+     </div>
+     <div class="card-footer">
+        <p class="text-center">Don't have an account? <a href="{%url 'register' %}">Create an account</a>.</p>
+     </div>
+   </div>
     </div>
     <!-- empty div -->
     <div class="col-md-4"></div>

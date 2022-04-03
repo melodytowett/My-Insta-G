@@ -19,13 +19,16 @@ def register_user(request):
             login(request,user)
             messages.success(request,"Registration successfull.")
             return redirect("login")
-        messages.error(request,"Invalid credentials.")
+        else:
+            messages.error(request,"Invalid credentials.")
+            return redirect('register')
+
     form=NewUserForm()
     return render(request,'registration/register.html',context={"register_form":form})
 
 def login_user(request):
-    if request.user.is_authenticated:
-        return redirect("my_page")
+    # if request.user.is_authenticated:
+    #     return redirect("my_page")
     if request.method == "POST":
         form = AuthenticationForm(request,data=request.POST)
         if form.is_valid():
@@ -76,6 +79,20 @@ def my_profile(request):
     else:
         form=ProfileForm()
     return render(request,'profile.html',{"profile_form":form})
+
+@login_required(login_url='/accounts/login')
+def new_post(request):
+    current_user = request.user
+    if request.method == 'POST':
+        pform = NewPostForm(request.POST,request.FILES)
+        if pform.is_valid():
+            post = pform.save(commit=False)
+            post.user = current_user
+            post.save()
+            return redirect('my_page')
+        else:
+            form = NewPostForm()
+        return render(request,'my-page.html',{"pform":pform})
 
 @login_required(login_url='/accounts/login/')
 def search_results(request):
