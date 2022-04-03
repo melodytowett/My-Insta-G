@@ -34,12 +34,16 @@
         <a href=" {% url 'profile' %} " style="color: black;"><i class='fa fa-plus-square black-color' style="font-size: 18px;"></i></a>
          
         <i class='far fa-heart' style='font-size:18px'></i>
-        <i class='fas fa-user-circle' style='font-size:18px'>
-          <!-- <li> <a href="{% url 'profile' %}}">profile</a>
-          <a href="/accounts/logout">Logout</a> -->
-        </i>
+          <a href="{%url 'profile' %}"><i class='fas fa-user-circle' style='font: size 18px; color: black;'></i> </a>
+          <a href="/accounts/logout"><i style='font-size:24px; color: black;' class='fas'>&#xf2f5;</i></a>
+         </i>
           
-        </li>
+        
+      </ul>
+      {% else %}
+      <ul>
+        <a href="/login">login</a>
+        <a href="/accounts/register">Sign Up</a>
       </ul>
       {% endif %}
     </div>

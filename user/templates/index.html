@@ -18,7 +18,7 @@
             <div class="card" style="width: 30rem;">
                 <div class="card-header">
                    <img src=" {{image.image.url}} " class="rounded-circle" style="width: 40px; height: 40px;" alt="" srcset="">
-                    <span> {{image.profile}} </span>
+                    <span> {{image.user}} </span>
                     <button type="button" class="btn" data-toggle="modal" data-target="#exampleModalCenter">
                           <b>{{image.image_name}}</b>
                       </button>
@@ -64,13 +64,8 @@
            </div>
            </div>
            <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
-               <ul>
-                   <li>
-                      {{image.user}}
-                   </li>
-               </ul>
-               <div style="margin-left: 100px;">
-                <img src=" {{image.image.url}} " class="rounded-circle" style="width: 40px; height: 40px;" alt="" srcset=""> <span>{{image.profile}} <a href="#">follow</a> </span>
+                 <div style="margin-left: 100px;">
+                <img src=" {{image.image.url}} " class="rounded-circle" style="width: 40px; height: 40px;" alt="" srcset=""> <span>{{image.user}} <a href="#">follow</a> </span>
                 <p class="text-muted" style="margin-left: 40px;">Follows you</p>
           </div>
             </div>
