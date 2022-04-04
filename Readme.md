@@ -11,6 +11,8 @@
 ****
 ## Description
 This is a clone of instagram application That allows user to register ,login,post their pictures like comment and even follow. 
+### To Upload readme Image
+* Drag your screenshort image to postimages.org and link will be provided
 [![instagram.png](https://i.postimg.cc/QdRnnyWY/instagram.png)](https://postimg.cc/FYVZYGp0)
 ## Live link
 https://melo-instaclone.herokuapp.com/
