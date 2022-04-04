@@ -5,7 +5,7 @@ from django .contrib.auth.decorators import login_required
 from .forms import CommentForm, NewPostForm,ProfileForm
 from .models import Image, Profile
 from .forms import NewUserForm
-from django.contrib.auth import login,authenticate
+from django.contrib.auth import login,authenticate,logout
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
 # Create your views here.
@@ -43,7 +43,12 @@ def login_user(request):
     form = AuthenticationForm()
     return render(request,'registration/login.html',context={"login_form":form})
 
-# @login_required(login_url='login/')
+def logout_request(request):
+	logout(request)
+	messages.info(request, "You have successfully logged out.") 
+	return redirect("my_page")
+
+@login_required(login_url='login/')
 def my_page(request):
     images = Image.objects.all()
     ctx = {'images':images}
@@ -80,7 +85,7 @@ def new_post(request):
         pform = NewPostForm()
     return render(request,'pages/my-page.html',{"pform":pform})
 
-@login_required(login_url='account/login/')
+@login_required(login_url='accounts/login/')
 def comment_post(request):
     current_user = request.user
     if request.method == 'POST':
@@ -89,10 +94,10 @@ def comment_post(request):
             comment = coform.save(commit=False)
             comment.user = current_user
             comment.save()
-        return redirect('my_page')
+            return redirect('my_page')
     else:
         coform = CommentForm()
-    return render(request,'index.html',{"coform":coform})
+    return render(request,'pages/comment.html',{"coform":coform})
         
 
 @login_required(login_url='accounts/login/')
