@@ -2,6 +2,7 @@
 from django.contrib.auth.models import User
 from django.db import models
 from cloudinary.models import CloudinaryField
+from tinymce.models import HTMLField
 
 # Create your models here.
 
@@ -21,7 +22,7 @@ class Image(models.Model):
     image_caption = models.CharField(max_length=200)
     user = models.ForeignKey(User ,on_delete=models.CASCADE,null=True)
     likes = models.IntegerField(default=0)
-    comments = models.CharField(max_length=100)
+    comments = HTMLField()
 
     def __str__(self):
         return self.image_name

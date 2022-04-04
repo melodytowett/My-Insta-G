@@ -64,8 +64,14 @@
                     <p class="card-subtitle mb-2"> <span> <b>{{image.image_name}}</b></span> {{image.image_caption}}<p> 
                 </div>
                      <p class="card-text text-muted"> <span><i class='far fa-smile-beam' style='font-size:24px'></i></span> add comment
-                    <a href=" /profile " class="card-text" style="margin-left: 250px;color: rgb(152, 152, 243); font-weight: bold;"> Post </a>
+                    <a href=" {%url 'comment'%} " class="card-text" style="margin-left: 250px;color: rgb(152, 152, 243); font-weight: bold;"> Post </a>
                     </p>  
+                    <div>
+                        <p>{{image.comment}}</p>
+                        {% autoescape on %}
+                        {{image.comment | safe}}
+                        {% endautoescape %}
+                    </div>
            </div>
            </div>
            <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">

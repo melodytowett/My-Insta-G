@@ -2,7 +2,7 @@
 from django.http import request
 from django.shortcuts import render,redirect
 from django .contrib.auth.decorators import login_required
-from .forms import NewPostForm,ProfileForm
+from .forms import CommentForm, NewPostForm,ProfileForm
 from .models import Image, Profile
 from .forms import NewUserForm
 from django.contrib.auth import login,authenticate
@@ -79,6 +79,21 @@ def new_post(request):
     else:
         pform = NewPostForm()
     return render(request,'pages/my-page.html',{"pform":pform})
+
+@login_required(login_url='account/login/')
+def comment_post(request):
+    current_user = request.user
+    if request.method == 'POST':
+        coform = CommentForm(request.POST,request.FILES)
+        if coform.is_valid():
+            comment = coform.save(commit=False)
+            comment.user = current_user
+            comment.save()
+        return redirect('my_page')
+    else:
+        coform = CommentForm()
+    return render(request,'index.html',{"coform":coform})
+        
 
 @login_required(login_url='accounts/login/')
 def search_results(request):
