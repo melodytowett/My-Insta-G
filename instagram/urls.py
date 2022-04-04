@@ -17,14 +17,19 @@ Including another URLconf
 from os import name
 from django.contrib import admin
 from django.urls import path,include
+from django_registration.backends.one_step.views import RegistrationView
 
 from user import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('user.urls')),
-    path('accounts/register/',views.register_user,name='register'),
-    path('accounts/', include('django.contrib.auth.urls')),
+    # path('accounts/register/',
+    #     RegistrationView.as_view(success_url='/profile/'),
+    #     name='django_registration_register'),
+    # path('accounts/', include('django_registration.backends.one_step.urls')),
+    # path('accounts/', include('django.contrib.auth.urls')),
+    path('register/',views.register_user,name='register'),
     path('tinymce/',include('tinymce.urls')),
-    path('login',views.login_user,name="login"),
+    path('login/',views.login_user,name="login"),
 ]

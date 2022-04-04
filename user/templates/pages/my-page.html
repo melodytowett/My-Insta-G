@@ -1,14 +1,13 @@
-{% load bootstrap4 %} {% load static %}
-{% load crispy_forms_tags %}
+{%extends 'pages/base.html'%} {%block content%} {{block.super}}
+{% load bootstrap4 %}
+{% load crispy_forms_tags %} 
+{%load static%}
 <!DOCTYPE html>
 <html>
 
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
- 
-
 {% block styles %} {% bootstrap_css %}
   <link rel="stylesheet" href="{% static 'css/pages.css' %}"> {% endblock %}
 
@@ -37,3 +36,4 @@
 </body>
 
 </html>
+{%endblock%}

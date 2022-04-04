@@ -11,7 +11,10 @@
                      {% endif %}
         </div>
         {%endfor%}
-        <div class="card-body">
+        <div class="card" style="width: 24rem; margin: 50px; margin-left: 200px;">
+            <h4 class="card-header">
+                Upade Your profile
+            </h4>
              <form  action="{%url 'profile'%}" method="post" enctype="multipart/form-data">
                      {% csrf_token %} {{ profile_form|crispy }}
                    <input type="submit" class="btn btn-success btn-sm" value="Post">
