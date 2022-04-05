@@ -62,10 +62,16 @@ ALLOWED_HOSTS=config('ALLOWED_HOSTS',cast=Csv())
 
 LOGIN_REDIRECT_URL = "/" 
 # Application definition
-cloudinary.config( 
-  cloud_name = "melo-cloud", 
-  api_key = "471374148232439", 
-  api_secret = "d0MpcQfMP4qllWvto7b1jL9baeE" 
+# cloudinary.config( 
+#   cloud_name = "melo-cloud", 
+#   api_key = "471374148232439", 
+#   api_secret = "d0MpcQfMP4qllWvto7b1jL9baeE" 
+# )
+cloudinary.config(
+    cloud_name=config('YOUR_CLOUD_NAME'),
+    api_key=config('YOUR_API_KEY'),
+    api_secret=config('YOUR_API_SECRET'),
+    secure=True
 )
 # cloudinary.config( 
 #   cloud_name = "YOUR_CLOUD_NAME", 
