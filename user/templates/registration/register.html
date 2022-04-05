@@ -20,6 +20,7 @@
                     <form action="/accounts/register/" method="post">
                         {% csrf_token %} 	{{ register_form|crispy }} 
                        <button class="btn btn-primary" type="submit">Register</button>
+                       <!-- <a href="/login/?next=/" class="btn btn-primary">Register</a> -->
                        <input type="hidden" name="next" value="{{next}}">
                     </form>
                     <div class="card-footer">

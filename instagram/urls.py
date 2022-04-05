@@ -29,8 +29,8 @@ urlpatterns = [
     #     name='django_registration_register'),
     # path('accounts/', include('django_registration.backends.one_step.urls')),
     # path('accounts/', include('django.contrib.auth.urls')),
-    path('register/',views.register_user,name='register'),
+    # path('register/',views.register_user,name='register'),
     path('tinymce/',include('tinymce.urls')),
-    path('login/',views.login_user,name="login"),
-    path("logout", views.logout_request, name= "logout"),
+    # path('login/',views.login_user,name="login"),
+    # path("logout", views.logout_request, name= "logout"),
 ]

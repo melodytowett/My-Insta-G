@@ -60,7 +60,7 @@ ALLOWED_HOSTS=config('ALLOWED_HOSTS',cast=Csv())
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
-LOGIN_REDIRECT_URL = "/" 
+LOGIN_REDIRECT_URL = "/"
 # Application definition
 # cloudinary.config( 
 #   cloud_name = "melo-cloud", 

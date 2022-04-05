@@ -15,10 +15,10 @@ def register_user(request):
     if request.method == "POST":
         form = NewUserForm(request.POST)
         if form.is_valid():
-            user = form.save()
-            login(request,user)
+            form.save()
+            # login(request,user)
             messages.success(request,"Registration successfull.")
-            return redirect(my_page)
+            return redirect(login_user)
         messages.error(request,"Invalid credentials.")
         # return redirect('/login')
 
@@ -27,21 +27,39 @@ def register_user(request):
 
 def login_user(request):
     if request.method == "POST":
-        form = AuthenticationForm(request,data=request.POST)
+        form = AuthenticationForm(request, data=request.POST)
         if form.is_valid():
             username = form.cleaned_data.get('username')
             password = form.cleaned_data.get('password')
-            user = authenticate(username=username,password=password)
+            user = authenticate(username=username, password=password)
             if user is not None:
-                login(request,user)
-                messages.info(request,f"you are now loged in as {username}")
-                return redirect("my_page")
+                login(request, user)
+                messages.info(request, f"You are now logged in as {username}.")
+                return redirect(my_page)
             else:
                 messages.error(request,"Invalid username or password.")
         else:
-            messages.error(request,"invalid username or password.")
+            messages.error(request,"Invalid username or password.")
     form = AuthenticationForm()
-    return render(request,'registration/login.html',context={"login_form":form})
+    return render(request=request,template_name="registration/login.html", context={"login_form":form})
+
+# def login_user(request):
+#     if request.method == "POST":
+#         form = AuthenticationForm(request,data=request.POST)
+#         if form.is_valid():
+#             username = form.cleaned_data.get('username')
+#             password = form.cleaned_data.get('password')
+#             user = authenticate(username=username,password=password)
+#             if user is not None:
+#                 login(request,user)
+#                 messages.info(request,f"you are now loged in as {username}")
+#                 return redirect(my_page)
+#             else:
+#                 messages.error(request,"Invalid username or password.")
+#         else:
+#             messages.error(request,"invalid username or password.")
+#     form = AuthenticationForm()
+#     return render(request,'registration/login.html',context={"login_form":form})
 
 def logout_request(request):
 	logout(request)
